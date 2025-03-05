@@ -7,8 +7,8 @@ pipeline{
             sh 'cat results.html'
         }
         }    
-        }
-      }
+        
+      
     stage('dockerLogin') {
         steps{
             sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS \
@@ -31,5 +31,6 @@ pipeline{
             sh 'docker push 136688660029.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci:latest'
             sh 'docker push 136688660029.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci:v1.$BUILD_NUMBER'
         }
+    }
     }
     }
